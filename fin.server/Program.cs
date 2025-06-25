@@ -11,7 +11,7 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("CONNECTION_STRING");
         builder.Services.AddNpgsql<FinContext>(connectionString);
         // Add services to the container.
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllers();
 
         var app = builder.Build();
 
