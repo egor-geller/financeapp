@@ -9,5 +9,6 @@ public static class DataExtensions
         using var scope = app.Services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<FinContext>();
         context.Database.Migrate();
+        // context.Database.EnsureCreated();
     }
 }

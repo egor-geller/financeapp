@@ -1,4 +1,9 @@
 using fin.server.Data;
+using fin.server.Filters;
+using fin.server.Repository;
+using fin.server.Repository.Interface;
+using fin.server.Service;
+using fin.server.Service.Interface;
 
 namespace fin.server;
 
@@ -10,8 +15,15 @@ public class Program
         
         var connectionString = builder.Configuration.GetConnectionString("CONNECTION_STRING");
         builder.Services.AddNpgsql<FinContext>(connectionString);
-        // Add services to the container.
-        builder.Services.AddControllers();
+        
+        builder.Services.AddScoped<IAuth, AuthRepo>();
+        builder.Services.AddScoped<IAuthService, AuthService>();
+        
+        builder.Services.AddControllers(options =>
+        {
+            options.Filters.Add(new GlobalExceptionFilter());
+        });
+
 
         var app = builder.Build();
 

@@ -26,7 +26,7 @@ public class Account
     public string? Iban { get; set; }
 
     // Foreign key to User, if multi-user system
-    public string UserId { get; set; } = string.Empty;
+    public Guid UserId { get; set; }
     public User? User { get; set; }
 
     // public ICollection<Transaction>? Transactions { get; set; }

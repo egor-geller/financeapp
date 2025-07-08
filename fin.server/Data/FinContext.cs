@@ -1,4 +1,5 @@
 using fin.server.Models.Accounts;
+using fin.server.Models.Transactions;
 using fin.server.Models.Users;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +8,8 @@ namespace fin.server.Data;
 public class FinContext(DbContextOptions<FinContext> options) : DbContext(options)
 {
     public DbSet<User> Users => Set<User>();
-    public DbSet<Account> Accounts => Set<Account>();
+    // public DbSet<Account> Accounts => Set<Account>();
+    public DbSet<Transaction> Transactions => Set<Transaction>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
